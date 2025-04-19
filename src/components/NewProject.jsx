@@ -3,7 +3,7 @@ import Button from './Button'
 import Input from './Input'
 import Modal from './Modal'
 
-export default function NewProject({ onAddProject }) {
+export default function NewProject({ onAddProject, onCancel }) {
   const title = useRef()
   const description = useRef()
   const dueDate = useRef()
@@ -34,16 +34,18 @@ export default function NewProject({ onAddProject }) {
   return (
     <>
       <Modal ref={modal} buttonCaption='close'>
-        <h2>Invalid input</h2>
-        <p>Oops...seems like you forgot to enter a value.</p>
-        <p>
+        <h2 className='text-xl font-bold my-4 text-stone-700'>Invalid input</h2>
+        <p className='text-stone-600 mb-4'>
+          Oops...seems like you forgot to enter a value.
+        </p>
+        <p className='text-stone-600 mb-4'>
           Please make sure you provide a valid input value for all the fields.
         </p>
       </Modal>
       <div className='w-[65rem] mt-16'>
         <menu className='flex items-center justify-end gap-4 my-4'>
           <li>
-            <Button>Cancel</Button>
+            <Button onClick={onCancel}>Cancel</Button>
           </li>
           <li>
             <Button onClick={handleSave}>Save</Button>
